@@ -5,6 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
@@ -13,6 +14,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Nychollas_301259514_Assignment2_devops_367</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>war
+	</packaging>
 	<url/>
 	<licenses>
 		<license/>
@@ -61,6 +64,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				                <configuration>
+                    <mainClass>com.centennial.microservice.Nychollas301259514Assignment2Devops367Application</mainClass>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
