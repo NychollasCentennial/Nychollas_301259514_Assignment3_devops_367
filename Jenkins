@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+    tools {
+        maven "mavem3"
+    }
+    environment {
+        DOCKERHUB_USER = credentials('docker-hub-credentials') 
+    }
+    stages {
+        stage("Checkout") {
+            steps {
+git branch: 'main', url: 'https://github.com/NychollasCentennial/comp_367_ex2'
+
+            }
+        }
+
+        stage("Build Maven") {
+            steps {
+                sh 'echo "mvn clean install"'
+                sh 'mvn clean install'
+            }
+        }
+
+        stage("Build Docker image") {
+            steps {
+                script {
+                    sh 'echo "docker"'
+                    sh '/usr/local/bin/docker build -t nychollas96/lab3:latest -f /Users/nychollas/eclipse-workspace/comp_367_ex2/Dockerfile .'
+                }
+            }
+        }
+
+        stage("Login to Docker Hub") {
+            steps {
+                script {
+                    
+                        echo "Docker Hub username is available."
+                         sh('/usr/local/bin/docker login -u $DOCKERHUB_USER_USR --p $DOCKERHUB_USER_PSW')
+
+                    
+                }       
+            }
+        }
+
+        stage("Push Docker image") {
+            steps {
+                script {
+                    sh '/usr/local/bin/docker push nychollas96/lab3:latest'
+                }
+            }
+        }
+    }
+}
