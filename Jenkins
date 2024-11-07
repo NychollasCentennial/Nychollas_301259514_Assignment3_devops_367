@@ -25,7 +25,7 @@ git branch: 'main', url: 'https://github.com/NychollasCentennial/comp_367_ex2'
             steps {
                 script {
                     sh 'echo "docker"'
-                    sh '/usr/local/bin/docker build -t nychollas96/lab3:latest -f /Users/nychollas/eclipse-workspace/comp_367_ex2/Dockerfile .'
+                    sh '/usr/local/bin/docker build -t nychollas96/lab3:latest -f /Users/nychollas/eclipse-workspace/Nychollas_301259514_Assignment3_devops_367/Dockerfile .'
                 }
             }
         }
